@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { CustomInput } from './CustomInput';
 import { Link } from 'react-router-dom';
 
+const initialState = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+}
+
 export const LoginForm = () => {
+
+    const [form, setForm] = useState(initialState);
+    
+
+    const handleOnChange = (e) => {
+        const {name, value} = e.target;
+        setForm({
+            ...form,
+            [name]: value,
+        });
+
+    }
 
     const inputs = [{
         label: "Email",
@@ -21,10 +40,12 @@ export const LoginForm = () => {
         placeholder: "*******",
     }]
 
+    console.log(form)
+
     return (
         <Form>
             {inputs.map((item, i) => (
-                <CustomInput key={i} {...item} />
+                <CustomInput key={i} {...item} onChange={handleOnChange} />
             ))}
 
             <div className="d-grid">
