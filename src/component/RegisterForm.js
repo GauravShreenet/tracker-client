@@ -62,7 +62,7 @@ export const RegisterForm = () => {
         type: "email",
         name: "email",
         required: true,
-        placeholder: "John",
+        placeholder: "John@email.com",
         value: form.email
     },
     {
